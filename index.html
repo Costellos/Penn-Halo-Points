@@ -23,7 +23,7 @@
             <!-- <div class="advanced_filters">
                 Test
             </div> -->
-            <div class="table_con table-responsive"">
+            <div class="table_con table-responsive">
                 <table class="table table-striped table-bordered" style="width:100%" id="points_table">
                     <thead>
                         <tr>
@@ -31,10 +31,11 @@
                             <th>Gamertag</th>
                             <th>Current Points</th>
                             <th>Total Points</th>
-                            <th>Summer Slayer 19 Points</th>
-                            <th>Summer Slayer 19 Placing</th>
                             <th>Autumn Assault 19 Qualifier Points</th>
                             <th>Autumn Assault 19 Qualifier Placing</th>
+                            <th>Summer Slayer 19 Points</th>
+                            <th>Summer Slayer 19 Placing</th>
+                            
                         </tr>
                     </thead>
                     <tbody id="data_rows"></tbody>
@@ -48,10 +49,6 @@
         $( document ).ready(function() {
 
             var maintenance_mode = false;
-
-            if(maintenance_mode == true){
-                $('.maintenance_mode').css('display', 'block');
-            }
 
             $('.advanced_filters').slideToggle();
 
@@ -78,8 +75,7 @@
                     var player_id = player.gsx$id.$t;
                     var player_gamertag = player.gsx$name.$t;
 
-                    if(player_id && player_gamertag != ''){
-
+                    if(player_gamertag != 'maintenance_mode' && player_id != ''){
                         
                         var player_current_points = player.gsx$totalcurrentpoints.$t;
                         var player_total_points = player.gsx$totalpoints.$t;
@@ -99,15 +95,23 @@
                             html = html + '<td>'+player_gamertag+'</td>';
                             html = html + '<td>'+player_current_points+'</td>';
                             html = html + '<td>'+player_total_points+'</td>';
-                            html = html + '<td>'+ss19_points+'</td>';
-                            html = html + '<td>'+ss19_place+'</td>';
                             html = html + '<td>'+aa19oq_points+'</td>';
                             html = html + '<td>'+aa19oq_place+'</td>';
+                            html = html + '<td>'+ss19_points+'</td>';
+                            html = html + '<td>'+ss19_place+'</td>';
                         html = html + '</tr>';
 
                         $('#data_rows').prepend(html);
                     }else{
-                        $('.late_updated_date').text(player_id);
+                        console.log(player);
+                        var maintenance_mode = player.gsx$maintenance.$t;
+                        var updated = player.gsx$updated.$t;
+                        if(maintenance_mode == 'TRUE'){
+                            $('.maintenance_mode').css('display', 'block');
+                        }
+                        if(updated != ''){
+                            $('.late_updated_date').text(updated);
+                        }
                     }
                     
                 });
