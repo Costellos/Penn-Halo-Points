@@ -10,6 +10,7 @@
     <body>
         <div class="container">
             <div class="basic_filters">
+                <div class="alert alert-danger maintenance_mode" role="alert">Website is in Maintenance Mode. The data below is currently being update. This page might bread during this maintenance window.</div>
                 <div class="gt_filter_con">
                     <label for="gt_filter">Gamertag:</label>
                     <input type="text" name="gt_filter" id="gt_filter">
@@ -45,6 +46,12 @@
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/dt-1.10.20/af-2.3.4/b-1.6.0/b-html5-1.6.0/fh-3.1.6/r-2.2.3/datatables.min.js"></script>
         <script>
         $( document ).ready(function() {
+
+            var maintenance_mode = false;
+
+            if(maintenance_mode == true){
+                $('.maintenance_mode').css('display', 'block');
+            }
 
             $('.advanced_filters').slideToggle();
 
