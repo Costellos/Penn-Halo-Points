@@ -1,0 +1,22 @@
+@import url("structure.css");
+
+body{
+    background: #4d4d4d;
+}
+
+/* Hide Datatables Filter */
+#points_table_filter{
+    display: none;;
+}
+
+/* Style our filter */
+.basic_filters{
+    background:#ffffff;
+    margin:15px 0px;
+    padding:10px;
+}
+
+/* Style Table */
+.table_con{
+    background:#ffffff;
+}
