@@ -9,6 +9,12 @@ body{
     display: none;;
 }
 
+.header{
+	background-color: #ffffff;
+	text-align: center;
+	padding:25px 15px 15px 15px;
+}
+
 /* Style our filter */
 .basic_filters{
     background:#ffffff;
