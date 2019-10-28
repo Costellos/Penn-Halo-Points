@@ -4,6 +4,17 @@ body{
     background: #4d4d4d;
 }
 
+.header{
+    background: #ffffff;
+    padding:15px 0px;
+    text-align: center;
+}
+
+.header .logo{
+    text-align: center;
+}
+
+
 /* Hide Datatables Filter */
 #points_table_filter{
     display: none;;
